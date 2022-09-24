@@ -11,7 +11,8 @@ This is an example codebase to demonstrate my issue with trying to set up a secu
 3. Update your `/etc/hosts` file to point to 127.0.0.1 or update your DNS records to point to 
    wherever you are going to be deploying this Traefik codebase.
 4. Run `docker-compose up` to deploy Traefik.
-5. Notice that you can go to the dashboard by going to `http://localhost/dashboard/` and login with
-   username: `admin` and password: `password`. You should also be able to get there by going to
-   the domain you entered in step 2 as long as you use `http://` and not `https://`, which is
-   the issue this codebase is trying to demonstrate.
+5. Notice that you can go to the dashboard by going to `http://localhost/dashboard/` and login with:
+   * username: `admin` 
+   * password: `password` 
+6. You should also be able to get there by going to the domain you entered in step 2 as long as 
+   you use `http://` and not `https://`, which is the issue this codebase is trying to demonstrate.
