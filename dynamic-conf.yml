@@ -1,0 +1,20 @@
+tls:
+  stores:
+    default:
+      defaultCertificate:
+        certFile: /ssl/site.crt
+        keyFile: /ssl/private.pem
+
+# Securing the dashboard according to https://doc.traefik.io/traefik/operations/dashboard/#secure-mode
+http:
+  routers:
+    dashboard:
+      rule: (Host(`localhost`) || Host(`traefik.mydomain.com`)) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+      service: api@internal
+      middlewares:
+        - auth
+  middlewares:
+    auth:
+      basicAuth:
+        users:
+          - 'admin:$2y$05$hbW2hdCWArdQ.7As.mtdCeyGvEFOZigRyl3ie8R3GqT5t3Q4Pjxj.'

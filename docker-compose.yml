@@ -1,0 +1,21 @@
+version: "3.9"
+
+networks:
+  traefik-net:
+    external: true
+
+services:
+  reverse-proxy:
+    container_name: traefik
+    image: traefik:v2.8
+    networks:
+      - traefik-net
+    ports:
+      - "80:80" # "web" HTTP listener
+      - "443:443" # "websecure" SSL listener
+      #- "8080:8080" # Traefik dashboard when insecure=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Allows Traefik to listen to the Docker events
+      - ./static-conf.yml:/etc/traefik/traefik.yml:ro # Provide the static config file.
+      - ./dynamic-conf.yml:/etc/traefik/dynamic/conf.yml:ro # Provide the dynamic config file (SSL)
+      - ./ssl:/ssl:ro # Wildcard default SSL certificate referenced in dynamic-conf.yml
