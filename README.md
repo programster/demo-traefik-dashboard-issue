@@ -13,6 +13,9 @@ This is an example codebase to demonstrate my issue with trying to set up a secu
 4. Run `docker-compose up` to deploy Traefik.
 5. Notice that you can go to the dashboard by going to `http://localhost/dashboard/` and login with:
    * username: `admin` 
-   * password: `password` 
+   * password: `password`
 6. You should also be able to get there by going to the domain you entered in step 2 as long as 
-   you use `http://` and not `https://`, which is the issue this codebase is trying to demonstrate.
+   you use `http://`
+   * ![](./docs/images/domain-http.png)
+7. However, not when you use `https://`, which is the issue this codebase is trying to demonstrate.
+   * ![](./docs/images/domain-https.png)
